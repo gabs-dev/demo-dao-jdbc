@@ -1,5 +1,6 @@
 package application;
 
+import db.DbException;
 import model.dao.DaoFactory;
 import model.dao.impl.DepartmentDaoJDBC;
 import model.entities.Department;
@@ -34,6 +35,16 @@ public class Program2 {
         //Department newDepartment = new Department(null, "Construction");
         //departmentDao.insert(newDepartment);
         //System.out.println("Inserted! New ID = " + newDepartment.getId());
+
+        System.out.println("\n=== TEST 4: department update ===");
+        try {
+            Department dep = departmentDao.findById(6);
+            dep.setName("Test");
+            departmentDao.update(dep);
+            System.out.println("Update completed!");
+        } catch (DbException e) {
+            System.err.println(e.getMessage());
+        }
 
         input.close();
 

@@ -53,7 +53,25 @@ public class DepartmentDaoJDBC implements IDao<Department> {
 
     @Override
     public void update(Department department) {
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(
+                    "UPDATE department SET Name = ? WHERE Id = ?"
+            );
 
+            st.setString(1, department.getName());
+            st.setInt(2, department.getId());
+
+            int rows = st.executeUpdate();
+
+            if (rows == 0) {
+                throw new DbException("No departments have been updated!");
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
