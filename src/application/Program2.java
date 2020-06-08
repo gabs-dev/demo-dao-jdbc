@@ -24,11 +24,16 @@ public class Program2 {
             System.err.println("No departments found!");
         }
 
-        System.out.println("=== TEST 2: department findAll ===");
+        System.out.println("\n=== TEST 2: department findAll ===");
         List<Department> list = departmentDao.findAll();
         for (Department dep : list) {
             System.out.println(dep);
         }
+
+        System.out.println("\n=== TEST 3: department insert ===");
+        //Department newDepartment = new Department(null, "Construction");
+        //departmentDao.insert(newDepartment);
+        //System.out.println("Inserted! New ID = " + newDepartment.getId());
 
         input.close();
 
