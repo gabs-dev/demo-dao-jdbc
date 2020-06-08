@@ -44,6 +44,18 @@ public class Program2 {
             System.out.println("Update completed!");
         } catch (DbException e) {
             System.err.println(e.getMessage());
+        } catch (NullPointerException e) {
+            System.err.println("No department found!");
+        }
+
+        System.out.println("\n=== TEST 5: department delete ===");
+        System.out.println("Enter a department Id: ");
+        id = input.nextInt();
+        try {
+            departmentDao.deleteById(id);
+            System.out.println("Delete completed!");
+        } catch (DbException e) {
+            System.err.println(e.getMessage());
         }
 
         input.close();
