@@ -4,6 +4,7 @@ import model.dao.DaoFactory;
 import model.dao.impl.DepartmentDaoJDBC;
 import model.entities.Department;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Program2 {
@@ -23,6 +24,13 @@ public class Program2 {
             System.err.println("No departments found!");
         }
 
+        System.out.println("=== TEST 2: department findAll ===");
+        List<Department> list = departmentDao.findAll();
+        for (Department dep : list) {
+            System.out.println(dep);
+        }
+
+        input.close();
 
     }
 
